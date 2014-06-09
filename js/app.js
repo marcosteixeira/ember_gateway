@@ -7,9 +7,10 @@ App.Router.map(function() {
 })
 
 App.Transaction = Ember.Object.extend({
-    value : "",
-    type: "",
-    quotes: 1, 
+    value : "", // Valor a receber
+    value_charge: "", // Valor a cobrar
+    type: "", // Tipo da transação
+    quotes: 1,  // Parcelas
     card_number: "",
     card_owner: "",
     card_date: "",
@@ -30,6 +31,7 @@ App.IndexRoute = Ember.Route.extend({
 });
 
 App.IndexController = Ember.Controller.extend({
+	quotes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
 	actions: {
 	    submitAction : function(){
 	        this.transitionToRoute('payment');
@@ -49,7 +51,6 @@ App.PaymentRoute = Ember.Route.extend({
 });
 
 App.PaymentController = Ember.Controller.extend({
-	quotes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
 	payments: [
 	    {name: "Cartão de crédito", id: 1},
 	    {name: "Débito", id: 2},
