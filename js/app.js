@@ -3,12 +3,17 @@ App = Ember.Application.create();
 
 App.Router.map(function() {
   this.route("payment");
+  this.route("card");
 })
 
 App.Transaction = Ember.Object.extend({
     value : "",
     type: "",
-    quotes: 1
+    quotes: 1, 
+    card_number: "",
+    card_owner: "",
+    card_date: "",
+    card_security_code: ""
 });
 
 transaction = App.Transaction.create();
@@ -44,7 +49,7 @@ App.PaymentRoute = Ember.Route.extend({
 });
 
 App.PaymentController = Ember.Controller.extend({
-	// quotes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
+	quotes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
 	payments: [
 	    {name: "Cartão de crédito", id: 1},
 	    {name: "Débito", id: 2},
@@ -60,7 +65,7 @@ App.PaymentController = Ember.Controller.extend({
 	        payment_type  = transaction.type ;
 
 	        if ( payment_type == 1 ){
-	        	// enviar para cartão
+	        	this.transitionToRoute('card');
 	        }else if ( payment_type == 2 ) {
 	        	// enviar para débito
 	        }else {
@@ -68,6 +73,30 @@ App.PaymentController = Ember.Controller.extend({
 	        }
 	        model = this.get("model"); 
 	        console.log(model);
+    	}	
+	}
+});
+
+// CARD
+
+App.CardRoute = Ember.Route.extend({
+  model: function(){  	  
+      return transaction;
+  },
+  setupController : function(controller, model){
+	    controller.set("model", model);
+  }
+});
+
+App.CardController = Ember.Controller.extend({
+	quotes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
+
+	actions: {
+	    submitAction : function(){
+	    	var transaction = this.get("model")
+	        
+	        model = this.get("model"); 
+	        console.log(model.card_security_code);
     	}	
 	}
 });

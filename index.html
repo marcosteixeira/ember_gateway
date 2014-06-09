@@ -2,27 +2,42 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Ember Starter Kit</title>
+  <title>The Best Pag</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
   <script type="text/x-handlebars" data-template-name="index">
-    <h2>Index</h2>
+    <h1>Valor</h1>
     {{input valueBinding="model.value"}}
-    <button {{action submitAction target="controller"}}>Concluir</button>
+    <button {{action submitAction target="controller"}}>Continuar</button>
   </script>
 
   <script type="text/x-handlebars" data-template-name="payment">
-    <h1> {{model.value}} <h1>
+    <h1> Valor: {{model.value}} <h1>
     {{view Ember.Select
        content=payments
        optionValuePath="content.id"
        optionLabelPath="content.name"
        valueBinding="model.type" 
        selection= null }}
-    <button {{action submitAction target="controller"}}>Concluir</button>
+    <button {{action submitAction target="controller"}}>Continuar</button>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="card">
+    <h1> Valor: {{model.value}} <h1>
+    <h2>Cartão de crédito</h2>
+    Parcelas:
+    {{view Ember.Select
+       content=quotes
+       valueBinding="model.quotes" 
+       selection= null }}
+     Número: {{input valueBinding="model.card_number"}}
+     Nome: {{input valueBinding="model.card_owner"}}
+     Validade: {{input valueBinding="model.card_date"}}
+     Código de segurança: {{input valueBinding="model.card_security_code"}}
+    <button {{action submitAction target="controller"}}>Continuar</button>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
