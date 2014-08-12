@@ -52,9 +52,9 @@ App.PaymentRoute = Ember.Route.extend({
 
 App.PaymentController = Ember.Controller.extend({
 	payments: [
-	    {name: "Cartão de crédito", id: 1},
-	    {name: "Débito", id: 2},
-	    {name: "Dinheiro", id: 3}
+	    { name: "Cartão de crédito", id: 1 },
+	    { name: "Débito", id: 2 },
+	    { name: "Dinheiro", id: 3 }
   	],
   	currentPayment: {
    	 id: 1
@@ -72,8 +72,7 @@ App.PaymentController = Ember.Controller.extend({
 	        }else {
 	        	// enviar para dinheiro
 	        }
-	        model = this.get("model"); 
-	        console.log(model);
+	        model = this.get("model"); 	        
     	}	
 	}
 });
@@ -96,8 +95,7 @@ App.CardController = Ember.Controller.extend({
 	    submitAction : function(){
 	    	var transaction = this.get("model")
 	        
-	        model = this.get("model"); 
-	        console.log(model.card_security_code);
+	        model = this.get("model"); 	        
     	}	
 	}
 });
